@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafe Menu</title>
+</head>
+<body>
+<h2>Cafe Menu</h2>
+<a href="/showNewMenuItemForm">Add New Item</a>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="menuItem : ${menuItems}">
+        <td th:text="${menuItem.name}"></td>
+        <td th:text="${menuItem.description}"></td>
+        <td th:text="${menuItem.price}"></td>
+        <td>
+            <a th:href="@{/showFormForUpdate/{id}(id=${menuItem.id})}">Edit</a>
+            <a th:href="@{/deleteMenuItem/{id}(id=${menuItem.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
